@@ -12,7 +12,7 @@ elementsInsideDiv.forEach(element => {
   element.addEventListener('click', Event => {
     
     console.log('Clicou no filho da div.')
-    const nomeDaTag = element.
+    const nomeDaTag = element.tagName
     console.log(`Clicou no ${nomeDaTag}, filho
     da div.`)
     Event.stopPropagation()
@@ -70,8 +70,8 @@ h2.addEventListener('copy', () =>{
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 let egg = document.querySelector('.egg')
-egg.addEventListener('click', ()=>{
-
+egg.addEventListener('mousemove', event=>{
+  egg.textContent = `Eixo X: ${event.offsetX} | Eixo Y: ${event.offsetY}`
 })
 /*
   06
@@ -79,7 +79,10 @@ egg.addEventListener('click', ()=>{
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
-
+const button = document.querySelector("button")
+button.addEventListener('click', ()=>{
+  egg.style.background = 'lightgoldenrodyellow'
+})
 /*
   07
 
@@ -100,3 +103,8 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+
+let some = people.some(person => person.profession === "Front-end developer" )
+if(some == true){
+  console.log('O array people contém, no mínimo, um(a) Front-end developer.')
+}
